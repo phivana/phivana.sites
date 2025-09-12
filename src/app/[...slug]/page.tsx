@@ -1,3 +1,5 @@
+'src/app/[...slug]/page.tsx'
+
 export default function CatchAllPage({
   params,
 }: {
