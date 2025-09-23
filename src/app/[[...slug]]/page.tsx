@@ -1,3 +1,5 @@
+// apps\renderer\src\app\[[...slug]]\page.tsx
+
 import { headers as nextHeaders } from "next/headers";
 import { mongo } from "@/lib/db";
 import type { Snapshot } from "@/lib/types";

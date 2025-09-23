@@ -1,3 +1,5 @@
+// apps\renderer\src\lib\blocks.tsx
+
 import React from "react";
 import type { Block } from "./types";
 
