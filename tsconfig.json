@@ -1,32 +1,51 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next.config.js",
-    ".next/types/**/*.ts"
-  ],
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": ".",                    // <-- REQUIRED so "paths" works
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "ESNext"],
+    "types": ["node"],
+
+    // IMPORTANT: these replace the base config, keep everything you need:
+    "paths": {
+      // Make @ point to THIS app’s root so "@/videos/*" & "@/src/*" both work:
+      "@/*": ["./*"],
+
+      // (optional) workspace packages; make paths relative to apps/www
+      "@phivana/db": ["../../packages/db/src/index.ts"],  
+      "@phivana/db/*": ["../../packages/db/src/*"],    
+      "@phivana/auth": ["../../packages/auth/src/index.ts"],
+      "@phivana/auth/*": ["../../packages/auth/src/*"],
+      "@phivana/types": ["../../packages/types/src/index.ts"],
+      "@phivana/ui": ["../../packages/ui/src/index.ts"],
+      "@phivana/ui/*": ["../../packages/ui/src/*"],
+      "@phivana/site-chrome": ["../../packages/site-chrome/src/index.ts"],
+      "@phivana/site-chrome/*": ["../../packages/site-chrome/src/*"],
+      "@phivana/brand": ["../../packages/brand/src/index.ts"],
+      "@phivana/brand/*": ["../../packages/brand/src/*"],
+      "@phivana/schemas": ["../../packages/schemas/src/index.ts"],
+      "@phivana/schemas/*": ["../../packages/schemas/src/*"],
+      "@phivana/site-builder": ["../../packages/site-builder/src"],
+      "@phivana/site-builder/*": ["../../packages/site-builder/src/*"]
+    },
+
     "allowJs": true,
     "incremental": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "plugins": [{ "name": "next" }]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": [
+    "next-env.d.ts",
+    "src",
+    "types/**/*.d.ts",                 // <-- include custom d.ts (next step)
+    ".next/types/**/*.ts"
+ ],
+  "exclude": ["node_modules"]
 }

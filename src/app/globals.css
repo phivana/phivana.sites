@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* ADDED — Tailwind v4: tell Tailwind where to scan for class usage (monorepo packages) */
+@source "./**/*.{ts,tsx,mdx}";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
+@source "../../../../packages/brand/src/**/*.{ts,tsx}";
+@source "../../../../packages/site-chrome/src/**/*.{ts,tsx}";
+@source "../../../../packages/site-builder/src/**/*.{ts,tsx}";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
