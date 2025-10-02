@@ -1,3 +1,5 @@
+// apps\renderer\src\app\__unknown\page.tsx
+
 export default function Unknown() {
   return (
     <main style={{ padding: 24 }}>

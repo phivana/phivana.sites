@@ -33,7 +33,9 @@
       "@phivana/schemas": ["../../packages/schemas/src/index.ts"],
       "@phivana/schemas/*": ["../../packages/schemas/src/*"],
       "@phivana/site-builder": ["../../packages/site-builder/src"],
-      "@phivana/site-builder/*": ["../../packages/site-builder/src/*"]
+      "@phivana/site-builder/*": ["../../packages/site-builder/src/*"],
+      "@phivana/site-components": ["../../packages/site-components/src"],
+      "@phivana/site-components/*": ["../../packages/site-components/src/*"]
     },
 
     "allowJs": true,

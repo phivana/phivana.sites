@@ -1,3 +1,5 @@
+// apps\renderer\src\app\s\[siteId]\page.tsx
+
 import { getSite } from "@/src/lib/sites";
 import RenderPage from "@/src/components/render/page";
 
