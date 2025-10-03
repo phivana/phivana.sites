@@ -10,9 +10,10 @@ type SearchParams = Record<string, string | string[] | undefined>;
 export default async function SitePage({
   searchParams,
 }: {
-  searchParams?: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
   const hdrs = await headers();
+  const sp = await searchParams;
 
   let host =
     hdrs.get("x-request-host") ??
@@ -21,15 +22,12 @@ export default async function SitePage({
     "";
   host = host.split(",")[0].trim().replace(/:\d+$/, "");
 
-  // If domain mapping exists:
+  // Resolve by domain mapping (created during /api/publish)
   const byHost = getSiteByHost(host);
   if (byHost) return <RenderPage site={byHost} />;
 
-  // Dev: allow ?__site=<id> to inspect a given in-memory site
-  const devSiteId =
-    typeof searchParams?.__site === "string"
-      ? (searchParams?.__site as string)
-      : undefined;
+  // Dev: allow ?__site=<siteId> to inspect a given in-memory site
+  const devSiteId = typeof sp?.__site === "string" ? (sp.__site as string) : undefined;
   if (devSiteId) {
     const byId = getSite(devSiteId);
     if (byId) return <RenderPage site={byId} />;
