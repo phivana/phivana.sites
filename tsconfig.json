@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",                    // <-- REQUIRED so "paths" works
+    "baseUrl": ".",                    
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -13,12 +13,11 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable", "ESNext"],
     "types": ["node"],
 
-    // IMPORTANT: these replace the base config, keep everything you need:
+
     "paths": {
-      // Make @ point to THIS app’s root so "@/videos/*" & "@/src/*" both work:
       "@/*": ["./*"],
 
-      // (optional) workspace packages; make paths relative to apps/www
+
       "@phivana/db": ["../../packages/db/src/index.ts"],  
       "@phivana/db/*": ["../../packages/db/src/*"],    
       "@phivana/auth": ["../../packages/auth/src/index.ts"],
@@ -46,7 +45,7 @@
   "include": [
     "next-env.d.ts",
     "src",
-    "types/**/*.d.ts",                 // <-- include custom d.ts (next step)
+    "types/**/*.d.ts",                 
     ".next/types/**/*.ts"
  ],
   "exclude": ["node_modules"]

@@ -3,13 +3,13 @@ import type { SiteDoc } from "@phivana/site-builder";
 type StoredSite = SiteDoc & { eventId?: string };
 
 declare global {
-  // Keep state across hot reloads in dev
+  // Keep state across hot reloads in dev (Next dev server)
   // eslint-disable-next-line no-var
-  var __PHV_SITES__: Map<string, StoredSite> | undefined;
+  var __PHV_SITES__: Map<string, StoredSite> | undefined; // siteId -> site
   // eslint-disable-next-line no-var
-  var __PHV_HOSTS__: Map<string, string> | undefined; // host -> siteId
+  var __PHV_HOSTS__: Map<string, string> | undefined;      // host   -> siteId
   // eslint-disable-next-line no-var
-  var __PHV_SLUGS__: Map<string, string> | undefined; // slug -> siteId
+  var __PHV_SLUGS__: Map<string, string> | undefined;      // slug   -> siteId
 }
 
 const SITES = globalThis.__PHV_SITES__ ?? (globalThis.__PHV_SITES__ = new Map());
@@ -38,7 +38,7 @@ export function getSiteByHost(host: string) {
   return siteId ? getSite(siteId) : undefined;
 }
 
-/** Map a slug to a siteId (for /p/[slug] previews and to compute host). */
+/** Map a slug to a siteId (for slugged previews and to compute host). */
 export function mapSlugToSite(slug: string, siteId: string) {
   if (!slug) return;
   SLUGS.set(slug.toLowerCase(), siteId);
@@ -48,6 +48,11 @@ export function mapSlugToSite(slug: string, siteId: string) {
 export function getSiteBySlug(slug: string) {
   const siteId = SLUGS.get((slug || "").toLowerCase());
   return siteId ? getSite(siteId) : undefined;
+}
+
+/** Resolve *only* the siteId by slug (used to ensure slug uniqueness per site). */
+export function getSiteIdBySlug(slug: string): string | undefined {
+  return SLUGS.get((slug || "").toLowerCase());
 }
 
 /** For debug routes. */

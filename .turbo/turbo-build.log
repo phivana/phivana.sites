@@ -1,0 +1,8 @@
+
+> 000_phivana-sites@0.1.0 build D:\Development\phivana\apps\renderer
+> next build --turbopack
+
+   ▲ Next.js 15.5.4 (Turbopack)
+   - Environments: .env
+
+   Creating an optimized production build ...
