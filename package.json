@@ -1,21 +1,27 @@
 {
-  "name": "000_phivana-sites",
+  "name": "@phivana/renderer",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@9.12.2",
   "scripts": {
     "dev": "cross-env NEXT_DISABLE_TURBOPACK=1 next dev -p 3002",
-    "build": "cross-env NODE_ENV=production NEXT_DISABLE_TURBOPACK=1 next build",
+    "build": "next build",
     "start": "next start -p 3002",
-    "lint": "eslint"
+    "lint": "next lint",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "embla-carousel-autoplay": "^8.6.0",
-    "embla-carousel-react": "^8.6.0",
-    "mongodb": "^6.19.0",
+    "@phivana/site-builder": "workspace:*",
+    "@phivana/site-components": "workspace:*",
+    "@phivana/schemas": "workspace:*",
+    "@phivana/ui": "workspace:*",
+    "@phivana/brand": "workspace:*",
+    "@phivana/types": "workspace:*",
     "next": "15.5.4",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "mongodb": "^6.19.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -28,9 +34,5 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "cross-env": "^7.0.3"
-  },
-  "overrides": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
   }
 }
