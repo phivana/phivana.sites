@@ -5,10 +5,6 @@ import type { StoredSite } from "@/src/lib/sites";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type ImportPayload = {
-  siteId: string;
-  site: unknown;
-};
 
 // Minimal runtime check; if you have a real runtime schema, use it here.
 function isStoredSite(v: unknown): v is StoredSite {
