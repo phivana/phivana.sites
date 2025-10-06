@@ -2,6 +2,7 @@
   "name": "000_phivana-sites",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.12.2",
   "scripts": {
     "dev": "cross-env NEXT_DISABLE_TURBOPACK=1 next dev -p 3002",
     "build": "cross-env NEXT_DISABLE_TURBOPACK=1 next build",
